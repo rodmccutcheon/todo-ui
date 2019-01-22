@@ -10,5 +10,3 @@ COPY typings.json ./
 RUN typings install
 
 COPY . .
-
-RUN npm run build
