@@ -1,0 +1,97 @@
+{
+
+  "package": {
+    "root": "./",
+    "name": "todo",
+    "json": [
+      "package.json"
+    ]
+  },
+
+  "src": {
+    "root": "src/",
+    "templates": [
+      "src/todo.pug",
+      "src/angular/app/todo/routes/**/*.pug",
+      "src/angular/modules/**/*.pug"
+    ],
+    "styles": "src/**/*.styl",
+    "scripts": "src/**/*.{ts,js}",
+    "entries": [
+      "src/angular/app/todo/app.ts"
+    ],
+    "resources": [
+      "src/**/*.png",
+      "src/**/*.jpg",
+      "src/**/*.svg",
+      "src/**/*.json",
+      "src/**/*.csv",
+      "src/**/*.mp3"
+    ],
+    "fonts": [
+      "src/fonts/**/*"
+    ],
+    "robots": [
+      "robots.txt"
+    ]
+  },
+
+  "dist": {
+    "root": "dist/",
+    "filenames": {
+      "templates": "todo.html",
+      "styles": "todo.css",
+      "scripts": "todo.js"
+    },
+    "templates": "dist/**/*.html",
+    "styles": "dist/**/*.css",
+    "scripts": "dist/**/*.js"
+  },
+
+  "vendor": {
+    "filenames": {
+      "styles": "vendor.css",
+      "scripts": "vendor.js"
+    },
+    "styles": [
+      "node_modules/reset-css/reset.css",
+      "node_modules/toastr/build/toastr.css",
+      "node_modules/angularjs-datepicker/dist/angular-datepicker.min.css"
+    ],
+    "scripts": [
+      "d3",
+      "angular",
+      "angular-animate",
+      "angular-route",
+      "moment",
+      "moment-timezone",
+      "ngtouch",
+      "stackblur-canvas",
+      "jquery",
+      "angularjs-datepicker",
+      "toastr"
+    ]
+  },
+
+  "tmp": {
+    "root": "tmp/",
+    "templates": "tmp/**/*.html",
+    "styles": "tmp/**/*.css",
+    "scripts": "tmp/**/*.{ts,js}"
+  },
+
+  "test": {
+    "unit": {
+      "scripts": "test/**/*.{ts,js}",
+      "out": "test.js",
+      "files": [
+        "tmp/test/test.js",
+        "node_modules/babel-polyfill/dist/polyfill.js"
+      ],
+      "tmp": {
+        "root": "tmp/test"
+      }
+    }
+  }
+
+}

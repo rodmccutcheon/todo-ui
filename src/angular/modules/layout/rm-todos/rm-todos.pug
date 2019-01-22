@@ -1,0 +1,8 @@
+div
+    ul.rm-todos-list
+        li.rm-todos-list-item(
+            ng-repeat='todo in todosList.todos track by $index'
+        )
+            div
+                span {{ todo.title }}
+

@@ -1,0 +1,13 @@
+doctype html
+html(lang='en' ng-app='todo')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport' content='width=device-width initial-scale=1')
+        base(href='/')
+        title Todo
+        link(rel='stylesheet' type='text/css' href='/vendor.css')
+        link(rel='stylesheet' type='text/css' href='/todo.css')
+    body
+        div(ng-view)
+        script(src='/vendor.js')
+        script(src='/todo.js')
