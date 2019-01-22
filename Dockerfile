@@ -1,12 +1,12 @@
-FROM node:latest-alpine
+FROM node:11.7.0-alpine
 
 WORKDIR /usr/src/app
-
-# Install the dependencies in stages so they are cached in layers
 COPY package*.json ./
+
 RUN npm install
 
 COPY typings.json ./
+
 RUN typings install
 
 COPY . .
