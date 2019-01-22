@@ -1,5 +1,7 @@
 FROM node:11.7.0-alpine
 
+RUN npm install typings@1.4.0
+
 WORKDIR /usr/src/app
 COPY package*.json ./
 
