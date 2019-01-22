@@ -1,21 +1,14 @@
-# docker run -i -t tellus-ui /bin/bash
+FROM node:latest-alpine
 
-FROM node:argon
-
-# Create app directory
-RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-# Install app dependencies
-COPY package.json /usr/src/app/
-COPY typings.json /usr/src/app/
-RUN npm install -g gulp
-RUN npm install -g typescript
-RUN npm install -g typings
+# Install the dependencies in stages so they are cached in layers
+COPY package*.json ./
 RUN npm install
+
+COPY typings.json ./
 RUN typings install
 
-# Bundle app source
-COPY . /usr/src/app
+COPY . .
 
-EXPOSE 8080
+RUN npm run build
