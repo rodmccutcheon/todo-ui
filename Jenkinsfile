@@ -9,27 +9,21 @@
 
 pipeline {
     agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-v $HOME/.m2:/root/.m2'
-        }
+        dockerfile true
     }
-//    triggers {
-//        cron('H H(13-16) * * *')
-//    }
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh 'gulp build'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'npm test'
             }
             post {
                 always {
-                    junit 'todo-web/target/surefire-reports/*.xml'
+                    junit 'target/surefire-reports/*.xml'
                 }
             }
         }
@@ -44,20 +38,6 @@ pipeline {
             steps {
                 echo 'TODO: deploy step'
             }
-        }
-    }
-    post {
-        success {
-            slackSend channel: '#ops',
-                    color: 'good',
-                    message: 'The pipeline ${currentBuild.fullDisplayName} completed successfully.'
-
-        }
-        failure {
-            slackSend channel: '#ops',
-                    color: 'bad',
-                    message: 'The pipeline ${currentBuild.fullDisplayName} failed.'
-
         }
     }
 }
