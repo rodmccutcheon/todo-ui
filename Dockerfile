@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 RUN npm install -g gulp typings@1.4.0
 
 COPY package*.json ./
-RUN npm install
+RUN npm install && npm link gulp
 
 COPY typings.json ./
 RUN typings install
